@@ -1,3 +1,6 @@
+mod word_list;
+mod game;
+
 fn main() {
-    println!("Hello, world!");
+    game::run();
 }
