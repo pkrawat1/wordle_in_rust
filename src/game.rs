@@ -18,7 +18,7 @@ pub fn highlight_matched_chars(guess: &str, sol: &str) -> String {
     let black_square = '⬛';
     let yellow_square = '🟨';
     let sol_bytes = sol.as_bytes();
-    let mut hint = String::new();
+    let mut hints = String::new();
     for (i, b) in guess.bytes().enumerate() {
         let c = if b == sol_bytes[i] {
             green_square
@@ -27,9 +27,9 @@ pub fn highlight_matched_chars(guess: &str, sol: &str) -> String {
         } else {
             black_square
         };
-        hint.push(c);
+        hints.push(c);
     }
-    hint
+    hints
 }
 
 pub fn run() {
@@ -50,9 +50,9 @@ pub fn run() {
         }
 
         tries += 1;
-        let hint = highlight_matched_chars(&guess, &solution);
+        let hints = highlight_matched_chars(&guess, &solution);
         pretty_print(&guess);
-        pretty_print(&hint);
+        pretty_print(&hints);
 
         if guess == solution {
             println!("Congrats \u{1F973}, you win!");
@@ -60,9 +60,9 @@ pub fn run() {
         }
 
         if tries < 6 {
-          println!("{} more trie(s)", max_tries - tries);
+            println!("{} more trie(s)", max_tries - tries);
         } else {
-          break;
+            break;
         }
     }
 

@@ -1,5 +1,5 @@
-use std::collections::HashSet;
 use rand::Rng;
+use std::collections::HashSet;
 
 pub struct WordList<'a> {
     common: Vec<&'a str>,
@@ -1458,7 +1458,8 @@ impl<'a> WordList<'a> {
         ];
 
         let total_common = common.len();
-        let valid_words: HashSet<&'a str> = common.iter().chain(uncommon.iter()).map(|s| *s).collect();
+        let valid_words: HashSet<&'a str> =
+            common.iter().chain(uncommon.iter()).map(|s| *s).collect();
         WordList {
             common,
             valid_words,
